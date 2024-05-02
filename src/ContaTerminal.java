@@ -3,32 +3,41 @@ import java.util.Scanner;
 public class ContaTerminal {
   public static void main(String[] args) {
     Scanner scan = new Scanner(System.in);
-    String titulo = "Criar conta no banco";
 
-    System.out.println(titulo);
-    System.out.println("-".repeat(titulo.length()));
+    Utils.printDivider();
+    Utils.printTitle("Criar conta no banco");
 
     try {
       System.out.print("nome: ");
-      String nomeCliente = scan.nextLine();
+      String clientName = scan.nextLine();
 
       System.out.print("agência: ");
-      String numeroAgencia = scan.next();
+      String agencyNumber = scan.next();
 
       System.out.print("conta: ");
-      int numeroConta = scan.nextInt();
+      int accountNumber = scan.nextInt();
 
       System.out.print("saldo: ");
-      float saldo = scan.nextFloat();
+      float balance = scan.nextFloat();
 
-      System.out.println(
-          "Olá " + nomeCliente + ", obrigado por criar uma conta em nosso banco.");
-      System.out.println("Sua agência é " + numeroAgencia + ", conta " +
-          numeroConta + " e seu saldo R$ " + saldo + " já está disponível para saque.");
+      printAccountData(clientName, agencyNumber, accountNumber, balance);
+
     } catch (Exception e) {
       System.out.println("Tipo de dado inválido!");
     }
 
     scan.close();
+  }
+
+  public static void printAccountData(String clientName, String agencyNumber, int accountNumber, float balance) {
+    Utils.printDivider();
+    Utils.printTitle("Conta criada com sucesso!");
+
+    System.out.println(" Nome    | " + clientName);
+    System.out.println(" Agência | " + agencyNumber);
+    System.out.println(" Conta   | " + accountNumber);
+    System.out.println(" Saldo   | R$ " + balance);
+
+    Utils.printDivider();
   }
 }
